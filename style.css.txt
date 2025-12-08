@@ -1,0 +1,97 @@
+[INIZIO FILE STYLE.CSS]
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    font-size: 20px;
+    background: #111;
+}
+
+.nav-btn {
+    background: #222;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.day-label {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.stats-mode {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: #111;
+}
+
+.stats-mode button {
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: none;
+    background: #333;
+    color: #fff;
+}
+
+.premium-stats {
+    padding: 15px;
+}
+
+.day-editor {
+    padding: 15px;
+}
+
+.section-title {
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px;
+    border-radius: 12px;
+    background: #111;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+textarea {
+    height: 70px;
+}
+
+.badge {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.7);
+    padding: 14px 20px;
+    background: gold;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: all 0.35s ease-out;
+}
+
+.badge.show {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+[FINE FILE STYLE.CSS]
