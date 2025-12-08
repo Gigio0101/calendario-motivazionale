@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivation Tracker Premium</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <h1>Motivation Tracker</h1>
+  <div class="nav">
+    <button id="prev-day">⟨</button>
+    <button id="today-btn">Oggi</button>
+    <button id="next-day">⟩</button>
+  </div>
+  <div id="today-label"></div>
+</header>
+
+<section id="summary">
+  <h2>Adesione periodo</h2>
+  <div class="bar"><span>Cardio</span><div class="bar-fill" id="cardio-bar"></div></div>
+  <div class="bar"><span>Palestra</span><div class="bar-fill" id="gym-bar"></div></div>
+  <div class="bar"><span>Dieta</span><div class="bar-fill" id="diet-bar"></div></div>
+  <div class="bar"><span>Peso</span><div class="bar-fill" id="weight-bar"></div></div>
+</section>
+
+<section id="day-card"></section>
+
+<div id="badge" class="hidden"></div>
+<div id="motivation-banner"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
