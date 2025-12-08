@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Ottimizzazione iPhone / PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Motivation Tracker">
+    <meta name="theme-color" content="#020617">
+
+    <!-- Icona premium (devi avere icon-512.png nella root del repo) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-512.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+
+    <title>Motivation Tracker Premium</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="app-header">
+        <div class="title-block">
+            <h1>Motivation Tracker</h1>
+            <p id="today-label" class="today-label"></p>
+        </div>
+        <div class="header-controls">
+            <button id="prev-day" class="icon-btn" aria-label="Giorno precedente">⟨</button>
+            <button id="next-day" class="icon-btn" aria-label="Giorno successivo">⟩</button>
+        </div>
+    </header>
+
+    <section class="top-bar">
+        <div class="mode-switch">
+            <label for="stats-mode">Statistiche:</label>
+            <select id="stats-mode">
+                <option value="week">Settimanale</option>
+                <option value="month">Mensile</option>
+                <option value="year">Annuale</option>
+            </select>
+        </div>
+        <div class="weight-target">
+            <label for="target-weight">Obiettivo peso (kg)</label>
+            <input type="number" id="target-weight" step="0.1" placeholder="Es. 75">
+        </div>
+    </section>
+
+    <section id="summary" class="summary">
+        <h2>Adesione periodo</h2>
+        <div class="summary-row">
+            <span>Cardio</span>
+            <div class="progress-bar"><div id="cardio-bar" class="progress-fill"></div></div>
+            <span id="cardio-summary" class="summary-value"></span>
+        </div>
+        <div class="summary-row">
+            <span>Palestra</span>
+            <div class="progress-bar"><div id="gym-bar" class="progress-fill"></div></div>
+            <span id="gym-summary" class="summary-value"></span>
+        </div>
+        <div class="summary-row">
+            <span>Dieta</span>
+            <div class="progress-bar"><div id="diet-bar" class="progress-fill"></div></div>
+            <span id="diet-summary" class="summary-value"></span>
+        </div>
+        <div class="summary-row">
+            <span>Peso</span>
+            <div class="progress-bar"><div id="weight-bar" class="progress-fill"></div></div>
+            <span id="weight-summary" class="summary-value"></span>
+        </div>
+    </section>
+
+    <main class="layout">
+        <section class="day-section">
+            <h2>Giornata</h2>
+            <div id="day-card" class="day-card"></div>
+        </section>
+
+        <section class="stats-section">
+            <h2>Statistiche motivazioni</h2>
+            <div class="reason-block">
+                <h3>Palestra – motivi di mancato allenamento</h3>
+                <ul id="workout-reasons-list" class="reason-list"></ul>
+            </div>
+            <div class="reason-block">
+                <h3>Dieta – motivi di mancata aderenza</h3>
+                <ul id="diet-reasons-list" class="reason-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <section class="impedance-reminder hidden" id="impedance-reminder">
+        <p>È da almeno una settimana che non inserisci i dati impedenziometrici. Fallo oggi per tenere traccia dei progressi.</p>
+    </section>
+
+    <section class="motivation-banner" id="motivation-banner"></section>
+
+    <div id="badge" class="badge hidden"></div>
+
+    <footer class="footer-note">
+        I dati restano salvati solo su questo dispositivo. Per usarla come app su iPhone: apri in Safari e seleziona “Aggiungi a schermata Home”.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
