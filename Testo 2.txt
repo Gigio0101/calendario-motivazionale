@@ -1,0 +1,60 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.day-card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.day-card h2 {
+    margin: 0 0 10px 0;
+}
+
+.label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+select, input[type="checkbox"], textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: none;
+    height: 50px;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-row label {
+    margin: 0;
+}
+
+.save-hint {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 25px;
+    color: #666;
+}

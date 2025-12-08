@@ -1,0 +1,96 @@
+// Genera i giorni lun–dom della settimana corrente
+function getCurrentWeek() {
+    const now = new Date();
+    const day = now.getDay(); // 0 = domenica
+    const diffToMonday = (day === 0 ? -6 : 1) - day;
+
+    const monday = new Date(now);
+    monday.setDate(now.getDate() + diffToMonday);
+
+    const days = [];
+    const labels = ["Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"];
+
+    for (let i = 0; i < 7; i++) {
+        const d = new Date(monday);
+        d.setDate(monday.getDate() + i);
+
+        days.push({
+            id: d.toISOString().split("T")[0],
+            label: labels[i],
+            date: d.toLocaleDateString("it-IT")
+        });
+    }
+
+    return days;
+}
+
+// Salva nel localStorage
+function saveData(data) {
+    localStorage.setItem("motivationalCalendar", JSON.stringify(data));
+}
+
+// Carica il salvataggio
+function loadData() {
+    const saved = localStorage.getItem("motivationalCalendar");
+    return saved ? JSON.parse(saved) : {};
+}
+
+const savedData = loadData();
+const week = getCurrentWeek();
+
+const container = document.getElementById("days-container");
+
+week.forEach(day => {
+    const dayData = savedData[day.id] || {
+        cardio: false,
+        workout: "Rest",
+        diet: false,
+        notes: ""
+    };
+
+    const div = document.createElement("div");
+    div.className = "day-card";
+
+    div.innerHTML = `
+        <h2>${day.label} – ${day.date}</h2>
+
+        <div class="checkbox-row">
+            <input type="checkbox" id="cardio-${day.id}" ${dayData.cardio ? "checked" : ""}>
+            <label for="cardio-${day.id}">Cardio completato?</label>
+        </div>
+
+        <label class="label">Allenamento</label>
+        <select id="workout-${day.id}">
+            <option ${dayData.workout === "Leg" ? "selected" : ""}>Leg</option>
+            <option ${dayData.workout === "Pull" ? "selected" : ""}>Pull</option>
+            <option ${dayData.workout === "Push" ? "selected" : ""}>Push</option>
+            <option ${dayData.workout === "Rest" ? "selected" : ""}>Rest</option>
+        </select>
+
+        <div class="checkbox-row" style="margin-top: 10px;">
+            <input type="checkbox" id="diet-${day.id}" ${dayData.diet ? "checked" : ""}>
+            <label for="diet-${day.id}">Aderenza dieta</label>
+        </div>
+
+        <label class="label">Note</label>
+        <textarea id="notes-${day.id}">${dayData.notes}</textarea>
+    `;
+
+    container.appendChild(div);
+
+    // Event listeners → salvataggio immediato
+    document.getElementById(`cardio-${day.id}`).addEventListener("change", save);
+    document.getElementById(`workout-${day.id}`).addEventListener("change", save);
+    document.getElementById(`diet-${day.id}`).addEventListener("change", save);
+    document.getElementById(`notes-${day.id}`).addEventListener("input", save);
+
+    function save() {
+        savedData[day.id] = {
+            cardio: document.getElementById(`cardio-${day.id}`).checked,
+            workout: document.getElementById(`workout-${day.id}`).value,
+            diet: document.getElementById(`diet-${day.id}`).checked,
+            notes: document.getElementById(`notes-${day.id}`).value
+        };
+        saveData(savedData);
+    }
+});
