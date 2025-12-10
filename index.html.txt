@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Calendario Motivazionale</title>
+
+    <!-- PWA / iPhone -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e88e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Calendario motivazionale</h1>
+            <p>Tieni traccia di cardio, allenamenti e dieta ogni giorno.</p>
+        </div>
+        <div class="hero-graphic">
+            <div class="hero-circle big"></div>
+            <div class="hero-circle small"></div>
+            <div class="hero-bar"></div>
+        </div>
+    </header>
+
+    <section id="summary-card" class="summary-card">
+        <h2>Settimana in corso</h2>
+        <div class="summary-row">
+            <span>Cardio</span>
+            <div class="progress">
+                <div class="progress-inner" id="progress-cardio"></div>
+            </div>
+            <span class="percent" id="percent-cardio">0%</span>
+        </div>
+        <div class="summary-row">
+            <span>Allenamenti</span>
+            <div class="progress">
+                <div class="progress-inner" id="progress-gym"></div>
+            </div>
+            <span class="percent" id="percent-gym">0%</span>
+        </div>
+        <div class="summary-row">
+            <span>Dieta</span>
+            <div class="progress">
+                <div class="progress-inner" id="progress-diet"></div>
+            </div>
+            <span class="percent" id="percent-diet">0%</span>
+        </div>
+        <p class="summary-note">
+            Obiettivo: 60’ walking pad, 3 sessioni gym (Leg/Pull/Push), dieta aderente al piano.
+        </p>
+    </section>
+
+    <main id="days-container"></main>
+
+    <p class="save-hint">
+        I dati vengono salvati automaticamente sul dispositivo.
+    </p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
