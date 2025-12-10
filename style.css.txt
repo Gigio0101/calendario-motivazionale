@@ -1,0 +1,288 @@
+/* ---------------------------
+   RESET & BASE
+---------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #020617;
+    color: #f8fafc;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-shell {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+h1, h2, h3 {
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* ---------------------------
+   HEADER
+---------------------------- */
+
+.app-header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.app-header h1 {
+    font-size: 28px;
+}
+
+.app-header p {
+    margin-top: 4px;
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+/* ---------------------------
+   CARD
+---------------------------- */
+
+.card {
+    background: rgba(255,255,255,0.04);
+    padding: 22px;
+    margin-bottom: 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+}
+
+/* ---------------------------
+   GIORNO — NAVIGAZIONE PREMIUM
+---------------------------- */
+
+.day-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.circle-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.weekday-label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+}
+
+.date-field {
+    width: 180px;
+    padding: 8px 10px;
+    font-size: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    text-align: center;
+}
+
+/* TODAY BUTTON */
+.today-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* ---------------------------
+   CAMPI GENERICI
+---------------------------- */
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.field-label {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.field-subtitle {
+    font-size: 13px;
+    margin: 6px 0 6px 0;
+    color: #64748b;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #f1f5f9;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+/* ---------------------------
+   BADGE COMPLETAMENTO
+---------------------------- */
+
+.day-complete {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(34,197,94,0.18);
+    border: 1px solid rgba(34,197,94,0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.day-complete-icon {
+    font-size: 22px;
+    color: #22c55e;
+}
+
+/* ---------------------------
+   PESO OBIETTIVO
+---------------------------- */
+
+.weight-status {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #22c55e;
+    transition: width 0.25s ease-out;
+}
+
+/* ---------------------------
+   STATISTICHE
+---------------------------- */
+
+.stats-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.stats-tab {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 10px;
+    font-size: 15px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #cbd5e1;
+    text-align: center;
+}
+
+.stats-tab.active {
+    background: #22c55e;
+    color: black;
+    border-color: #22c55e;
+    font-weight: 600;
+}
+
+.stats-mode-label {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: 8px 0;
+}
+
+.percent {
+    color: #22c55e;
+}
+
+.reasons-list p {
+    font-size: 14px;
+    margin: 4px 0;
+    color: #cbd5e1;
+}
+
+.note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* ---------------------------
+   INTERVALLO PERSONALIZZATO
+---------------------------- */
+
+.range-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.range-results {
+    margin-top: 12px;
+}
+
+/* ---------------------------
+   FOOTER
+---------------------------- */
+
+.save-hint {
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 28px;
+}
