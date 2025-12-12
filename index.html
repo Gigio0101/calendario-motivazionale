@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Calendario Motivazionale</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#020617" />
+
+  <!-- iOS PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="icon-512.png" />
+
+  <!-- iOS splash (opzionali) -->
+  <link rel="apple-touch-startup-image" href="splash-640x1136.png"
+        media="(device-width:320px) and (device-height:568px) and (-webkit-device-pixel-ratio:2)">
+  <link rel="apple-touch-startup-image" href="splash-750x1334.png"
+        media="(device-width:375px) and (device-height:667px) and (-webkit-device-pixel-ratio:2)">
+  <link rel="apple-touch-startup-image" href="splash-828x1792.png"
+        media="(device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:2)">
+  <link rel="apple-touch-startup-image" href="splash-1125x2436.png"
+        media="(device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3)">
+  <link rel="apple-touch-startup-image" href="splash-1170x2532.png"
+        media="(device-width:390px) and (device-height:844px) and (-webkit-device-pixel-ratio:3)">
+  <link rel="apple-touch-startup-image" href="splash-1179x2556.png"
+        media="(device-width:393px) and (device-height:852px) and (-webkit-device-pixel-ratio:3)">
+  <link rel="apple-touch-startup-image" href="splash-1284x2778.png"
+        media="(device-width:428px) and (device-height:926px) and (-webkit-device-pixel-ratio:3)">
+  <link rel="apple-touch-startup-image" href="splash-1290x2796.png"
+        media="(device-width:430px) and (device-height:932px) and (-webkit-device-pixel-ratio:3)">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- HOME -->
+    <section id="screen-home" class="screen">
+      <div class="hero" id="home-hero">
+        <div class="hero__bg" id="home-hero-bg"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <div class="hero__headline" id="home-headline">Calendario Motivazionale</div>
+          <div class="hero__desc" id="home-desc">Imposta i tuoi obiettivi e traccia i progressi.</div>
+        </div>
+      </div>
+
+      <div class="home-actions">
+        <button id="btn-open-today" class="btn-primary">Apri oggi</button>
+        <button id="btn-open-calendar" class="btn-secondary">Vai al calendario</button>
+        <button id="btn-open-setup" class="btn-tertiary">Impostazioni</button>
+      </div>
+
+      <div class="note-card">
+        <div class="note-title">Promemoria</div>
+        <div class="note-text">Notifiche alle 22:00: su iOS funzionano solo con l’app aperta (limitazione del browser).</div>
+      </div>
+    </section>
+
+    <!-- SETUP -->
+    <section id="screen-setup" class="screen hidden">
+      <header class="topbar">
+        <button class="icon-btn" id="btn-setup-back" aria-label="Indietro">←</button>
+        <div class="topbar-title">Configurazione</div>
+        <div style="width:44px;"></div>
+      </header>
+
+      <section class="card">
+        <h2>Benvenuto</h2>
+
+        <div class="field">
+          <label class="field-title">Foto (opzionale)</label>
+          <input type="file" id="welcome-image-input" accept="image/*" />
+          <div class="field-subtitle">La foto viene salvata sul dispositivo.</div>
+        </div>
+
+        <div class="field">
+          <label class="field-title">Titolo</label>
+          <input type="text" id="welcome-title-input" placeholder="Es. Costanza > motivazione" maxlength="80" />
+        </div>
+
+        <div class="field">
+          <label class="field-title">Testo</label>
+          <textarea id="welcome-text-input" placeholder="Scrivi qui la tua frase…" maxlength="240"></textarea>
+        </div>
+
+        <div class="hero-preview" id="hero-preview">
+          <div class="hero-preview__bg" id="hero-preview-bg"></div>
+          <div class="hero-preview__overlay"></div>
+          <div class="hero-preview__content">
+            <div class="hero-preview__headline" id="hero-preview-headline">—</div>
+            <div class="hero-preview__desc" id="hero-preview-desc">—</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Allenamenti</h2>
+
+        <div class="grid-2">
+          <div class="field">
+            <label class="field-title">Allenamenti settimanali</label>
+            <input type="number" id="workouts-per-week" min="1" max="14" step="1" />
+          </div>
+          <div class="field">
+            <label class="field-title">Nome riposo</label>
+            <input type="text" id="rest-label" placeholder="Es. Rest / Riposo" maxlength="20" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-title">Tipologie (una per riga)</label>
+          <textarea id="workout-types-textarea" placeholder="Es. Leg\nPull\nPush" rows="5"></textarea>
+          <div class="field-subtitle">Queste opzioni compariranno nel calendario.</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Dati corporei</h2>
+
+        <div class="grid-2">
+          <div class="field">
+            <label class="field-title">Altezza (cm)</label>
+            <input type="number" id="height-cm" min="80" max="250" step="1" />
+          </div>
+          <div class="field">
+            <label class="field-title">BMI (auto)</label>
+            <input type="text" id="bmi-output" disabled />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label class="field-title">Peso di partenza (kg)</label>
+            <input type="number" id="start-weight-input" step="0.1" inputmode="decimal" />
+          </div>
+          <div class="field">
+            <label class="field-title">Peso obiettivo (kg)</label>
+            <input type="number" id="goal-weight-input" step="0.1" inputmode="decimal" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="summary-row">
+            <span>Avanzamento obiettivo</span>
+            <span id="weight-progress-percent-setup" class="percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div id="weight-progress-bar-setup" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <details class="details">
+          <summary>Impedenziometria (opzionale)</summary>
+
+          <div class="grid-2">
+            <div class="field">
+              <label class="field-title">Massa grassa (%)</label>
+              <input type="number" id="fat-percent" step="0.1" />
+            </div>
+            <div class="field">
+              <label class="field-title">Massa magra (kg)</label>
+              <input type="number" id="lean-mass" step="0.1" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label class="field-title">Acqua (%)</label>
+              <input type="number" id="water-percent" step="0.1" />
+            </div>
+            <div class="field">
+              <label class="field-title">BMR (kcal)</label>
+              <input type="number" id="bmr" step="1" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label class="field-title">Grasso viscerale</label>
+              <input type="number" id="visceral-fat" step="1" />
+            </div>
+            <div class="field">
+              <label class="field-title">Impedenza (Ω)</label>
+              <input type="number" id="impedance" step="1" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-title">Note</label>
+            <textarea id="body-notes" placeholder="Eventuali note…"></textarea>
+          </div>
+        </details>
+      </section>
+
+      <div class="bottom-actions">
+        <button id="btn-save-setup" class="btn-primary">Salva</button>
+        <button id="btn-reset-all" class="btn-danger">Reset totale (cancella dati)</button>
+      </div>
+    </section>
+
+    <!-- MAIN -->
+    <section id="screen-main" class="screen hidden">
+      <header class="topbar">
+        <button class="icon-btn" id="btn-main-home" aria-label="Home">←</button>
+        <div class="topbar-title">Giorno</div>
+        <button class="icon-btn" id="btn-main-setup" aria-label="Impostazioni">⚙︎</button>
+      </header>
+
+      <section class="card">
+        <div class="day-nav">
+          <button id="prev-day-btn" class="circle-btn" aria-label="Giorno precedente">←</button>
+
+          <div class="day-center">
+            <div id="current-day-label" class="weekday-label">—</div>
+            <input type="date" id="current-date-input" class="date-field" />
+          </div>
+
+          <button id="next-day-btn" class="circle-btn" aria-label="Giorno successivo">→</button>
+        </div>
+
+        <button id="today-btn" class="today-btn">Oggi</button>
+
+        <div class="field">
+          <label class="field-label">
+            <input type="checkbox" id="cardio-checkbox" />
+            <span>Cardio completato</span>
+          </label>
+          <div class="field-subtitle">Motivo se NON hai fatto il cardio</div>
+          <select id="cardio-reason-select">
+            <option value="">— Seleziona un motivo —</option>
+            <option value="tempo">Mancanza di tempo</option>
+            <option value="stanchezza">Stanchezza</option>
+            <option value="salute">Problemi di salute</option>
+            <option value="lavoro">Impegni di lavoro</option>
+            <option value="viaggio">Viaggio / spostamenti</option>
+            <option value="altro">Altro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-title">Allenamento</label>
+          <select id="workout-select"></select>
+          <div class="field-subtitle">Motivo se NON ti sei allenato (lascia vuoto se il riposo è programmato)</div>
+          <select id="workout-reason-select">
+            <option value="">— Seleziona un motivo —</option>
+            <option value="tempo">Mancanza di tempo</option>
+            <option value="stanchezza">Stanchezza</option>
+            <option value="salute">Problemi di salute</option>
+            <option value="lavoro">Impegni di lavoro</option>
+            <option value="viaggio">Viaggio / spostamenti</option>
+            <option value="altro">Altro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label">
+            <input type="checkbox" id="diet-checkbox" />
+            <span>Aderenza piano alimentare</span>
+          </label>
+          <div class="field-subtitle">Motivo se NON hai rispettato il piano</div>
+          <select id="diet-reason-select">
+            <option value="">— Seleziona un motivo —</option>
+            <option value="tempo">Mancanza di tempo</option>
+            <option value="stanchezza">Stanchezza</option>
+            <option value="salute">Problemi di salute</option>
+            <option value="lavoro">Impegni di lavoro</option>
+            <option value="viaggio">Viaggio / spostamenti</option>
+            <option value="altro">Altro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-title">Peso di oggi (kg)</label>
+          <input type="number" id="weight-input" step="0.1" inputmode="decimal" />
+          <div class="summary-row compact">
+            <span>Obiettivo</span>
+            <span id="weight-target-summary" class="stat-value">—</span>
+            <span id="weight-progress-percent-main" class="percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div id="weight-progress-bar-main" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-title">Note</label>
+          <textarea id="notes-textarea" placeholder="Eventuali note della giornata"></textarea>
+        </div>
+
+        <div id="day-complete-badge" class="day-complete hidden">
+          <span class="day-complete-icon">✓</span>
+          <span>Obiettivi completati.</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Statistiche</h2>
+
+        <div class="stats-tabs">
+          <button class="stats-tab active" data-mode="week">Settimana</button>
+          <button class="stats-tab" data-mode="month">Mese</button>
+          <button class="stats-tab" data-mode="year">Anno</button>
+        </div>
+
+        <p id="stats-mode-label" class="stats-mode-label">Settimana corrente</p>
+
+        <div class="summary-row">
+          <span>Cardio</span>
+          <span id="stats-cardio-value" class="stat-value">0 / 0</span>
+          <span id="stats-cardio-percent" class="percent">0%</span>
+        </div>
+        <div class="progress-bar"><div id="stats-cardio-progress" class="progress-fill"></div></div>
+
+        <div class="summary-row">
+          <span>Allenamenti</span>
+          <span id="stats-gym-value" class="stat-value">0 / 0</span>
+          <span id="stats-gym-percent" class="percent">0%</span>
+        </div>
+        <div class="progress-bar"><div id="stats-gym-progress" class="progress-fill"></div></div>
+
+        <div class="summary-row">
+          <span>Dieta</span>
+          <span id="stats-diet-value" class="stat-value">0 / 0</span>
+          <span id="stats-diet-percent" class="percent">0%</span>
+        </div>
+        <div class="progress-bar"><div id="stats-diet-progress" class="progress-fill"></div></div>
+
+        <h3>Mancato rispetto</h3>
+        <div class="summary-row"><span>Cardio</span><span id="stats-cardio-missed-total" class="stat-value">0</span></div>
+        <div class="summary-row"><span>Allenamenti</span><span id="stats-gym-missed-total" class="stat-value">0</span></div>
+        <div class="summary-row"><span>Dieta</span><span id="stats-diet-missed-total" class="stat-value">0</span></div>
+
+        <div id="stats-reasons-list" class="reasons-list"></div>
+      </section>
+
+      <section class="card">
+        <h2>Intervallo personalizzato</h2>
+        <div class="range-row">
+          <label>Dal <input type="date" id="range-start" /></label>
+          <label>Al <input type="date" id="range-end" /></label>
+        </div>
+        <button id="range-calc-btn" class="btn-tertiary">Calcola statistiche</button>
+
+        <div class="range-results">
+          <div class="summary-row"><span>Cardio</span><span id="range-cardio-count" class="stat-value">0</span></div>
+          <div class="summary-row"><span>Allenamenti</span><span id="range-gym-count" class="stat-value">0</span></div>
+          <div class="summary-row"><span>Dieta</span><span id="range-diet-count" class="stat-value">0</span></div>
+        </div>
+      </section>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
