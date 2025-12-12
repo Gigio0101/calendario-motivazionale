@@ -1,0 +1,26 @@
+{
+  "name": "Calendario Motivazionale",
+  "short_name": "Motivazione",
+  "description": "Traccia cardio, allenamenti, dieta e peso. Setup iniziale personalizzato.",
+  "lang": "it-IT",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
