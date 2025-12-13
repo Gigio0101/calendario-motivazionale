@@ -1,0 +1,95 @@
+/* v13 fix: intervallo personalizzato nascosto (modale), data centrata, card giorno più su */
+:root{--bg:#020617;--card:rgba(255,255,255,.04);--cardBorder:rgba(255,255,255,.08);--muted:#94a3b8;--muted2:#64748b;--text:#f8fafc;--accent:#22c55e;--inputBg:rgba(255,255,255,.06);--inputBorder:rgba(255,255,255,.12);}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.hidden{display:none!important}
+.app-shell{max-width:520px;margin:0 auto;padding:16px}
+.app-header{text-align:center;margin:6px 0 18px}
+.app-header h1{margin:0;font-size:28px;font-weight:800;letter-spacing:.2px}
+.app-header p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--cardBorder);border-radius:18px;padding:20px;margin-bottom:14px;backdrop-filter:blur(12px)}
+.card-day{margin-top:4px}
+.card-title-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h2{margin:0 0 12px;font-size:18px;font-weight:800}h3{margin:14px 0 8px;font-size:15px;color:#e5e7eb}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05)}
+.badge-success{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.14);color:rgba(220,252,231,.95)}
+.field{margin-bottom:16px}
+.field-title{display:block;font-size:14px;font-weight:800;margin-bottom:6px}
+.field-subtitle{margin:6px 0;font-size:12px;color:var(--muted2)}
+.field-label{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;margin-bottom:6px;max-width:100%}
+.field-label span{overflow-wrap:anywhere;line-height:1.2}
+input[type="text"],input[type="number"],input[type="date"],select,textarea{width:100%;padding:12px;border-radius:14px;border:1px solid var(--inputBorder);background:var(--inputBg);color:var(--text);font-size:15px}
+textarea{min-height:72px;resize:vertical}
+.day-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.circle-btn{width:46px;height:46px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--text);font-size:20px;display:flex;align-items:center;justify-content:center}
+.day-center{flex:1;text-align:center;min-width:0}
+.weekday-label,.date-field{font-size:20px;font-weight:900}
+.weekday-label{text-transform:capitalize;margin-bottom:8px}
+.date-field{width:min(240px,100%);margin:0 auto;text-align:center;padding:10px;display:block}
+.today-btn{width:100%;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--text);font-weight:900;font-size:16px;margin:2px 0 10px}
+.stats-tabs{display:flex;gap:8px;margin:2px 0 12px}
+.stats-tab{flex:1;padding:10px 0;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:rgba(226,232,240,.9);font-weight:900;font-size:14px}
+.stats-tab.active{background:linear-gradient(180deg,rgba(34,197,94,.95),rgba(34,197,94,.7));border-color:rgba(34,197,94,.45);color:#05140a}
+.stats-mode-label{text-align:center;margin:0 0 10px;color:var(--muted);font-size:13px}
+.summary-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0;font-size:14px}
+.stat-value{font-weight:900}.percent{color:var(--accent);font-weight:900}
+.progress-bar{width:100%;height:12px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin:6px 0 12px;border:1px solid rgba(255,255,255,.08)}
+.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,rgba(34,197,94,.95),rgba(34,197,94,.6));transition:width .2s ease-out}
+.reasons-list p{margin:6px 0;font-size:13px;color:rgba(226,232,240,.9)}
+.save-hint{text-align:center;color:var(--muted2);font-size:12px;margin:10px 0 18px}
+button{cursor:pointer}
+.btn-primary{width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(34,197,94,.35);background:linear-gradient(180deg,rgba(34,197,94,.95),rgba(34,197,94,.7));color:#05140a;font-weight:950;font-size:16px}
+.btn-tertiary{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:var(--text);font-weight:900}
+.btn-inline{width:auto;padding:10px 12px;font-size:13px;border-radius:12px}
+.modal{position:fixed;inset:0;z-index:999}
+.modal-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.66);backdrop-filter:blur(6px)}
+.modal-sheet{position:absolute;left:10px;right:10px;bottom:10px;max-width:520px;margin:0 auto;background:rgba(15,23,42,.92);border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 14px 10px}
+.modal-title{font-weight:950;font-size:16px}
+.icon-btn{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--text);font-size:20px}
+.modal-body{padding:0 14px 14px}
+.range-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:420px){.range-row{grid-template-columns:1fr}}
+.range-results{margin-top:12px}
+
+/* --- Fix layout iPhone: niente accavallamento frecce/data --- */
+.day-nav{
+  display:grid !important;
+  grid-template-columns: 56px 1fr 56px;
+  align-items:center;
+  gap:12px;
+}
+.circle-btn{ justify-self:center; }
+.day-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+/* Date display (centrato) */
+.date-display{
+  width:min(260px, 100%);
+  padding:10px 12px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-size:20px;
+  font-weight:900;
+  text-align:center;
+}
+/* input date reale: invisibile ma cliccabile via JS */
+.date-input-hidden{
+  position:absolute;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  opacity:0;
+}
+/* Modal range labels */
+.range-label{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  font-weight:900;
+}
+.range-row{ gap:16px !important; }
