@@ -1,0 +1,32 @@
+
+/* FINAL FIXES - Layout stability and centering */
+.day-nav{
+  display:grid;
+  grid-template-columns: 46px 1fr 46px;
+  align-items:center;
+  gap:8px;
+}
+.circle-btn{
+  justify-self:center;
+}
+.day-center{
+  text-align:center;
+  min-width:0;
+}
+.weekday-label{
+  margin-bottom:4px;
+}
+.date-field{
+  display:block;
+  margin:0 auto;
+  text-align:center;
+}
+.card{ margin-top:10px; }
+.range-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+@media (max-width:420px){
+  .range-row{ grid-template-columns:1fr; }
+}
