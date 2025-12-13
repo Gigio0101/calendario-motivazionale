@@ -1,0 +1,239 @@
+/* =========================
+   Base / Reset
+========================= */
+:root{
+  --bg:#020617;
+  --card:rgba(255,255,255,.04);
+  --cardBorder:rgba(255,255,255,.08);
+  --muted:#94a3b8;
+  --muted2:#64748b;
+  --text:#f8fafc;
+  --accent:#22c55e;
+  --accentSoft:rgba(34,197,94,.18);
+  --inputBg:rgba(255,255,255,.06);
+  --inputBorder:rgba(255,255,255,.12);
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  height:100%;
+  margin:0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.hidden{ display:none !important; }
+
+.app-shell{
+  max-width:520px;
+  margin:0 auto;
+  padding:16px;
+}
+
+/* =========================
+   Typography
+========================= */
+h1{ font-size:28px; margin:0 0 6px 0; }
+h2{ font-size:18px; margin:14px 0 8px 0; }
+h3{ font-size:15px; margin:10px 0 6px 0; }
+
+p{ margin:0; }
+
+/* =========================
+   Cards
+========================= */
+.card{
+  background:var(--card);
+  border:1px solid var(--cardBorder);
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:16px;
+  backdrop-filter: blur(12px);
+}
+
+/* =========================
+   Day navigation
+========================= */
+.day-nav{
+  display:grid;
+  grid-template-columns:46px 1fr 46px;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.circle-btn{
+  width:46px;
+  height:46px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.day-center{
+  text-align:center;
+  min-width:0;
+}
+
+.weekday-label{
+  font-size:20px;
+  font-weight:800;
+  text-transform:capitalize;
+  margin-bottom:6px;
+}
+
+.date-field{
+  width:100%;
+  max-width:240px;
+  margin:0 auto;
+  padding:10px 10px;
+  font-size:20px;
+  font-weight:800;
+  text-align:center;
+  border-radius:14px;
+  border:1px solid var(--inputBorder);
+  background:var(--inputBg);
+  color:var(--text);
+}
+
+.today-btn{
+  width:100%;
+  margin:10px 0 6px 0;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-weight:800;
+  font-size:16px;
+}
+
+/* =========================
+   Inputs
+========================= */
+input, select, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid var(--inputBorder);
+  background:var(--inputBg);
+  color:var(--text);
+  font-size:15px;
+}
+
+textarea{
+  min-height:70px;
+  resize:vertical;
+}
+
+/* =========================
+   Progress bars
+========================= */
+.progress-bar{
+  width:100%;
+  height:12px;
+  background:rgba(255,255,255,.08);
+  border-radius:999px;
+  overflow:hidden;
+  margin:6px 0 12px 0;
+}
+
+.progress-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, rgba(34,197,94,.95), rgba(34,197,94,.6));
+  transition:width .25s ease-out;
+}
+
+/* =========================
+   Stats tabs
+========================= */
+.stats-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.stats-tab{
+  flex:1;
+  padding:10px 0;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.05);
+  color:rgba(226,232,240,.9);
+  font-weight:800;
+}
+
+.stats-tab.active{
+  background:linear-gradient(180deg, rgba(34,197,94,.95), rgba(34,197,94,.7));
+  border-color:rgba(34,197,94,.45);
+  color:#05140a;
+}
+
+/* =========================
+   Range (Intervallo personalizzato) – FIX DEFINITIVO
+========================= */
+.range-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.range-row label{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-width:0;
+}
+
+.range-row input[type="date"]{
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  padding:10px 10px;
+  font-size:14px;
+  border-radius:14px;
+  text-align:center;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  -webkit-appearance:none;
+}
+
+@media (max-width:390px){
+  .range-row{
+    grid-template-columns:1fr;
+  }
+}
+
+/* =========================
+   Badge giorno completato
+========================= */
+.day-complete{
+  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(34,197,94,.35);
+  background:rgba(34,197,94,.14);
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* =========================
+   Utility
+========================= */
+.muted{ color:var(--muted); }
